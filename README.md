@@ -1,1 +1,3 @@
 # Crop-yield-estimation
+Developed a machine learning model to predict crop yield based on environmental and crop- related data, aiming to support informed farming decisions. Collected and analyzed data on crop types, precipitation, humidity, and temperature, performing extensive data preprocessing, including handling missing values, standardizing features, and encoding categorical variables. Built a ColumnTransformer pipeline to streamline the workflow and tested models like Linear Regression, Decision Tree, Random Forest, and Gradient Boost. Selected Random Forest as the optimal model based on its low MAE and high R² score, and deployed the model as a web app for real-time yield predictions. 
+Tools: Python, Scikit-Learn, Pandas, Numpy, Flask
