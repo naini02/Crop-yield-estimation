@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction</title>
+    <style>
+      body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      
+      background-image: url("{{ url_for('static', filename='crop.jpg') }}");
+      background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat; 
+  }
+  .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+  }
+  h1 {
+      text-align: center;
+      color: #333;
+  }
+  form {
+      display: flex;
+      flex-direction: column;
+  }
+  label {
+      margin-top: 10px;
+      font-weight: bold;
+  }
+  input[type="text"],
+  input[type="number"],
+  button {
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+  }
+  button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+  }
+  button:hover {
+      background-color: #218838;
+  }
+  .result {
+      color: #333;
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Crop Yield Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="crop">Crop</label>
+        <input type="text" id="crop" name="crop" required><br><br>
+        
+        <label for="Precipitation">Precipitation</label>
+        <input type="text" id="Precipitation" name="Precipitation" required><br><br>
+        
+        <label for="Humidity">Specific Humidity at 2 Meters (g/kg)</label>
+        <input type="text" id="Humidity" name="Humidity" required><br><br>
+
+        <label for="Relative">Relative Humidity at 2 Meters (%)</label>
+        <input type="text" id="Relative" name="Relative" required><br><br>
+
+        <label for="Temperature">Temperature at 2 Meters (C)</label>
+        <input type="text" id="Temperature" name="Temperature" required><br><br>
+
+
+
+        <button class="result" type="submit">Crop Yield</button>
+    </form>
+
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+
+  </div>
+</body>
+</html>
